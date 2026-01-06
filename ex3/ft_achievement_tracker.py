@@ -9,28 +9,36 @@ if __name__ == "__main__":
         'speed_demon', 'perfectionist'
         ]
     alice = set(list1)
-    boob = set(list2)
+    bob = set(list2)
     charlie = set(list3)
 
     print("=== Achievement Tracker System ===\n")
     print("Player alice achievements: ", alice)
-    print("Player boob achievements: ", boob)
+    print("Player bob achievements: ", bob)
     print("Player charlie achievements: ", charlie)
 
     print("\n=== Achievement Analytics ===")
-    unipue = alice.union(boob, charlie)
+    unipue = alice.union(bob, charlie)
     print("All unique achievements: ", unipue)
     print("Total unipue achievements: ", len(unipue))
 
-    common = alice.intersection(boob, charlie)
+    common = alice.intersection(bob, charlie)
     print("common to all players: ", common)
 
     rare = (
-        alice.union(boob, charlie)
+        alice.union(bob, charlie)
         .difference(
-            alice.intersection(boob)
+            alice.intersection(bob)
             .union(alice.intersection(charlie))
-            .union(boob.intersection(charlie))
+            .union(bob.intersection(charlie))
         ))
-
     print("Rare achivements (1 player): ", rare)
+
+    avb = alice.intersection(bob)
+    print("\nAlice vs Bob common: ", avb)
+
+    alice_unique = alice.difference(bob)
+    print("Alice unique: ", alice_unique)
+
+    bob_unique = bob.difference(alice)
+    print("Bob unique: ", bob_unique)
