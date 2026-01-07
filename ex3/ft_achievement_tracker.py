@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print("Total unipue achievements: ", len(unipue))
 
     common = alice.intersection(bob, charlie)
-    print("common to all players: ", common)
+    print("\ncommon to all players: ", common)
 
     rare = (
         alice.union(bob, charlie)
