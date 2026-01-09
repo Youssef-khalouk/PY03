@@ -1,5 +1,5 @@
 
-def game_event_stream(total_events) -> tuple[str, str, int]:
+def game_event_stream(total_events):
     """stream total events in the game."""
     players = ["alice", "bob", "charlie", "diana", "eve"]
     events = ["killed monster", "found treasure", "leveled up"]
@@ -26,6 +26,27 @@ for player, event, level in game_event_stream(total_events):
     if event == "found treasure":
         treasure_events += 1
 
+
+def fibonacci():
+    a = 0
+    b = 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
+def prime():
+    num = 2
+    while True:
+        is_prime = True
+        for i in range(2, num):
+            if num % i == 0:
+                is_prime = False
+        if is_prime:
+            yield num
+        num += 1
+
+
 print("...")
 print("\n=== Stream Analytics ===")
 print("Total events processed:", total_events)
@@ -36,3 +57,22 @@ print("Memory usage: Constant (streaming)")
 print("Processing time: 0.045 seconds")
 
 print("\n=== Generator Demonstration ===")
+
+print("Fibonacci sequence (first 10): ", end='')
+count = 0
+for i in fibonacci():
+    count += 1
+    print(i, end='')
+    if count == 10:
+        break
+    print(", ", end='')
+
+print("\nPrime numbers (first 5): ", end='')
+
+count = 0
+for i in prime():
+    count += 1
+    print(i, end='')
+    if count == 5:
+        break
+    print(", ", end='')
