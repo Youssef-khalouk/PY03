@@ -76,3 +76,4 @@ for i in prime():
     if count == 5:
         break
     print(", ", end='')
+print("")
